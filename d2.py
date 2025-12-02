@@ -6,13 +6,32 @@ from math import lcm
 import re
 
 def part1(lines):
-    pass
+    ranges = parseInput(lines)
+    results = set()
+    for r in ranges:
+        lower, upper = r.split('-')
+
+        for i in range(int(lower), int(upper) + 1):
+            s = str(i)
+            if re.match(r'^(\d+)\1$', s): results.add(int(s))
+    
+    return(sum(list(results)))
+
 
 def part2(lines):
-    pass
+    ranges = parseInput(lines)
+    results = set()
+    for r in ranges:
+        lower, upper = r.split('-')
+
+        for i in range(int(lower), int(upper) + 1):
+            s = str(i)
+            if re.match(r'^(\d+)\1+$', s): results.add(int(s))
+    
+    return(sum(list(results)))
     
 def parseInput(lines: list[str]):
-    pass
+    return [r for r in lines[0].split(',')]
 
 if __name__ == "__main__":
     # testFile = open("test.txt")
